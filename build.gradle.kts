@@ -25,12 +25,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.6.4")
     implementation("io.vavr", "vavr", "0.10.4")
+    implementation("org.liquibase", "liquibase-core", "4.13.0")
+    implementation("org.springframework:spring-jdbc:5.3.22")
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.postgresql:r2dbc-postgresql")
     implementation("io.projectreactor.kafka", "reactor-kafka", "1.3.11")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
-
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
 
 tasks.withType<KotlinCompile> {

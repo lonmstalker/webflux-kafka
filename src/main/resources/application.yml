@@ -1,0 +1,31 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  application:
+    name: webflux-kafka
+  netty:
+    leak-detection: paranoid
+  r2dbc:
+    url: r2dbc:postgresql://localhost:55000/kafka
+    username: postgres
+    password: postgrespw
+    pool:
+      initial-size: 5
+      max-size: 10
+      max-idle-time: 5m
+      validation-query: SELECT 1
+  liquibase:
+    url: jdbc:postgresql://localhost:55000/kafka
+    user: postgres
+    password: postgrespw
+    change-log: db/migrations/master-changelog.yml
+    driver-class-name: org.postgresql.Driver
+  webflux:
+    base-path: /kotlin
+app:
+  secondServiceUrl: http://localhost:8081/rust
